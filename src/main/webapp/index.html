@@ -1,76 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-  <meta charset="utf-8">
-  <title>Murach's Java Servlets and JSP</title>
-  <link rel="stylesheet" href="styles/main.css" type="text/css">
+<meta charset="UTF-8">
+<title>Murach's Java Servlet and JSP</title>
+<link rel="stylesheet" href="styles/main.css">
 </head>
 <body class="brg">
-  <div class="form-card">
-    <img class="logo" src="images/murach_logo.jpg" alt="Murach Books" width="100" height="100">
-    <h1>Survey</h1>
-    <p>If you have a moment, we'd appreciate it if you would fill out this survey.</p>
+	<div class="form-card">
+		<h1>Join our email list</h1>
+		<p>To join our email list, enter your name and email address
+			below.</p>
 
-    <form action="emailList" method="post">
-      <h2>Your Information:</h2>
-      <input type="hidden" name="action" value="add"> 
+		<form action="emailList" method="post">
+			<input type="hidden" name="action" value="add"> <label
+				for="firstName">First name</label> <input id="firstName"
+				name="firstName" type="text" required pattern="\S(.*\S)?"
+				oninvalid="this.setCustomValidity('Vui lòng nhập Tên (không được bỏ trống).')"
+				oninput="this.setCustomValidity('')"><br> <label
+				for="lastName">Last name</label> <input id="lastName"
+				name="lastName" type="text" required pattern="\S(.*\S)?"
+				oninvalid="this.setCustomValidity('Vui lòng nhập Họ (không được bỏ trống).')"
+				oninput="this.setCustomValidity('')"><br> <label
+				for="email">Email</label> <input id="email" name="email"
+				type="email" required
+				oninvalid="this.setCustomValidity(this.validity.typeMismatch ? 'Vui lòng nhập địa chỉ email hợp lệ.' : 'Vui lòng nhập Email (không được bỏ trống).')"
+				oninput="this.setCustomValidity('')"><br>
 
-      <label>First Name:</label>
-      <input type="text" name="firstName" required 
-        oninvalid="this.setCustomValidity('Please enter your First Name.')"
-        oninput="this.setCustomValidity('')"><br> 
+			<button id="submit" type="submit">Join Now</button>
+		</form>
 
-      <label>Last Name:</label>
-      <input type="text" name="lastName" required 
-        oninvalid="this.setCustomValidity('Please enter your Last Name.')"
-        oninput="this.setCustomValidity('')"><br> 
+		<p id="serverMessage" style="color: #c00; margin-top: 12px"></p>
+	</div>
 
-      <label>Email:</label>
-      <input type="email" name="email" required
-        oninvalid="this.setCustomValidity('Please enter a valid Email.')"
-        oninput="this.setCustomValidity('')"><br> 
+	<script>
+		function getCookieRaw(name) {
+			const m = document.cookie.match(new RegExp('(?:^|; )'
+					+ name.replace(/([$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1')
+					+ '=([^;]*)'));
+			return m ? m[1] : '';
+		}
+		function getCookie(name) {
+			const raw = getCookieRaw(name);
 
-      <label>Date of Birth:</label>
-      <input type="date" name="dateOfBirth" required
-        oninvalid="this.setCustomValidity('Please select your Date of Birth.')"
-        oninput="this.setCustomValidity('')"><br>
+			return decodeURIComponent(raw.replace(/\+/g, ' '));
+		}
+		function delCookie(name) {
+			document.cookie = name + '=; Max-Age=0; path=/';
+		}
 
-      <h2>How did you hear about us?</h2>
-      <div class="options">
-        <label><input type="radio" name="ref" value="Search engine" onclick="toggleOther(false)" required> Search engine</label>
-        <label><input type="radio" name="ref" value="Word of mouth" onclick="toggleOther(false)"> Word of mouth</label>
-        <label><input type="radio" name="ref" value="Social Media" onclick="toggleOther(false)"> Social Media</label>
-        <label><input type="radio" name="ref" value="Other" onclick="toggleOther(true)"> Other</label>
-      </div>
+		const f = document.getElementById('firstName');
+		const l = document.getElementById('lastName');
+		const e = document.getElementById('email');
+		const msg = document.getElementById('serverMessage');
 
-      <div id="otherInput" style="display:none; margin-top: 8px;">
-        <label>Please specify:</label>
-        <input type="text" name="otherText" placeholder="Please specify...">
-      </div>
+		const cf = getCookie('firstName');
+		const cl = getCookie('lastName');
+		const ce = getCookie('email');
+		const cm = getCookie('message');
 
-      <h2>Would you like to receive announcements about new CDs and special offers?</h2>
-      <div class="options">
-        <label><input type="checkbox" name="wantOffers" value="yes"> YES, I'd like that.</label><br>
-        <label><input type="checkbox" name="wantEmail" value="yes"> YES, please send me email announcements.</label><br>
-      </div>
+		if (cf)
+			f.value = cf;
+		if (cl)
+			l.value = cl;
+		if (ce)
+			e.value = ce;
+		if (cm)
+			msg.textContent = cm;
 
-      <label for="contact" class="label-wide">Please contact me by:</label>
-      <select id="contact" name="contact">
-        <option>Email or postal mail</option>
-        <option>Email only</option>
-        <option>Postal mail only</option>
-      </select><br>
+		[ 'firstName', 'lastName', 'email', 'message' ].forEach(delCookie);
+	</script>
 
-      <input type="submit" value="Submit" id="submit">
-    </form>
-  </div>
-
-  <script>
-    function toggleOther(show) {
-      var otherInput = document.querySelector('input[name="otherText"]');
-      document.getElementById("otherInput").style.display = show ? "block" : "none";
-      otherInput.required = show; // bắt buộc nhập khi chọn Other
-    }
-  </script>
 </body>
 </html>
