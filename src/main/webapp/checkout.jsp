@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Checkout</title>
+<title>Murach's Java Servlets and JSP</title>
 <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -9,3 +9,4 @@
 	<p>Click on the browser's Back button to continue.</p>
 </body>
 </html>
+
