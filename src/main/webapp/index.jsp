@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>CD list</title>
+<title>Murach's Java Servlets and JSP</title>
 <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
