@@ -9,9 +9,9 @@ public class ConnectionPool {
     private static ConnectionPool pool = null;
 
     // 🔹 Thông tin kết nối PostgreSQL (đổi theo cấu hình Render của bạn)
-    private static final String URL = "jdbc:postgresql://dpg-d3gabe9r0fns73bepsa0-a.oregon-postgres.render.com:5432/sql2_db";
-    private static final String USER = "sql2_db_user";   // username Render cấp
-    private static final String PASSWORD = "tKphsIdvdegP8XNxXelJjzKOgAWVgaag"; // thay bằng password trong Render dashboard
+    private static final String URL = "jdbc:dpg-d3h6g4h5pdvs73f0tmgg-a.oregon-postgres.render.com:5432/ch12_1";
+    private static final String USER = "ch12_1_user";   // username Render cấp
+    private static final String PASSWORD = "e8uY8Zdiox6qDWCcJLFzJCcDzOaauq19"; // thay bằng password trong Render dashboard
 
 
     // Constructor riêng tư (singleton)
