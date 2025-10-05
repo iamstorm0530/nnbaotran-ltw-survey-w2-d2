@@ -6,9 +6,9 @@ public class ConnectionPool {
     private static ConnectionPool pool = null;
 
     // JDBC URL cho PostgreSQL (Render)
-    private static final String URL = "jdbc:postgresql://dpg-d3gabe9r0fns73bepsa0-a:5432/sql2_db";
-    private static final String USER = "sql2_db_user";       // user Render cấp
-    private static final String PASSWORD = "tKphsIdvdegP8XNxXelJjzKOgAWVgaag";  // thay bằng password Render cấp
+    private static final String URL = "jdbc:postgresql://dpg-d3h6g4h5pdvs73f0tmgg-a:5432/sql2_db";
+    private static final String USER = "ch12_1_user";       // user Render cấp
+    private static final String PASSWORD = "e8uY8Zdiox6qDWCcJLFzJCcDzOaauq19";  // thay bằng password Render cấp
 
     private ConnectionPool() {
         try {
